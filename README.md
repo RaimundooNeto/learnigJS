@@ -1,0 +1,2 @@
+# learnigJS
+Basic JavaScript exercises.
