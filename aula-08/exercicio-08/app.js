@@ -7,6 +7,12 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
+function multiply (firstNumber = null, secondNumber = null) {
+  return firstNumber * secondNumber
+}
+
+console.log(multiply(5, 6))
+
 /*
   02
 
@@ -14,6 +20,12 @@
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+
+const numbersDivision = function (firstNumber = 1, secondNumber = 1)  {
+  return firstNumber / secondNumber
+}
+
+console.log(numbersDivision(5, 2))
 
 /*
   03
@@ -28,6 +40,14 @@
   "Esta é a Xª vez que essa string é exibida."
 */
 
+const myFunc = function (count) {
+  console.log(`Esta é a ${count}ª vez que essa string é exibida`)
+}
+
+// for (let i = 1; i <= 7; i++) {
+//   myFunc(i)
+// }
+
 /*
   04
 
@@ -40,6 +60,19 @@
 */
 
 const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+
+const upperMillenialWords = []
+
+const upperWords = function (wordsArray) {
+  for (let i = 0; i < wordsArray.length; i++) {
+    upperMillenialWords.push(wordsArray[i].toUpperCase())
+  }
+}
+
+upperWords(millennialWords)
+
+console.log(upperMillenialWords)
+
 
 /*
   05
@@ -54,6 +87,29 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
 
+let positiveNumbersAmount = 0
+let negativeNumbersAmount = 0
+let totalIterator = 0
+
+const getPositiveNumbers = function (number) {
+  if (number > 0)
+    return true
+}
+
+for (let i = 0; i < randomNumbers.length; i++) {
+  const isPositiveNumber = getPositiveNumbers(randomNumbers[i])
+
+  if (isPositiveNumber){
+    positiveNumbersAmount++
+  }else {
+    negativeNumbersAmount++
+  } 
+totalIterator++   
+}
+
+const messageNumbers = `O array "randomNumbers" possui ${totalIterator} números, sendo ${positiveNumbersAmount} positivos e ${negativeNumbersAmount} negativos.`
+
+console.log(messageNumbers)
 /*
   06
 
@@ -64,7 +120,19 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
     função.
 */
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+const getOddNumbers = function (numberArray) {
+  const oddNumbers = []
+
+  for (let i = 0; i < numberArray.length; i++) {
+    const isOddNumber = numberArray[i] % 2 !== 0
+
+    if (isOddNumber) 
+      oddNumbers.push(numberArray[i])
+  }
+  return oddNumbers
+}
+
+console.log(getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42]))
 
 /*
   07
@@ -102,3 +170,11 @@ const functions = [
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
 ]
+
+let sentence = ''
+
+for (let i = 0; i < functions.length; i++) {
+  sentence += `${functions[i]()} `
+}
+
+console.log(sentence)

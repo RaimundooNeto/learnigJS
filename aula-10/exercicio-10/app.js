@@ -10,6 +10,17 @@
   - Exiba o objeto no console.
 */
 
+const cat = {
+  age: 4,
+  name: 'Agata',
+  color: 'branco e preto',
+  bestfriends: ['Neto', 'Lene'],
+  sound: () => 'miau'
+}
+
+
+console.log(cat)
+
 /*
   02
 
@@ -19,11 +30,16 @@
   Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "X", "age", que recebeu "X", "color", que recebeu "X", "bestFriends", que recebeu um array com os itens "X" e "X", e "sound", que recebeu uma função que retorna "X".
 */
 
+const messageCat = `Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "${cat.name}", "age", que recebeu "${cat.age}", "color", que recebeu "${cat.color}", "bestFriends", que recebeu um array com os itens "${cat.bestfriends[0]}" e "${cat.bestfriends[1]}", e "sound", que recebeu uma função que retorna "${cat.sound()}".`
+
+console.log(messageCat)
 /*
   03
 
   - Adicione 2 anos à idade do gato e exiba a idade atualizada no console.
 */
+
+console.log(cat.age +2)
 
 /*
   04
@@ -32,6 +48,12 @@
   - Exiba o array de amigos no console para verificar se o novo amigo(a) foi  
     adicionado.
 */
+
+const addCatFriends = friend => cat.bestfriends.push(friend)
+
+addCatFriends('Zezito')
+
+console.log(cat.bestfriends)
 
 /*
   05
@@ -42,6 +64,12 @@
     colchetes.
 */
 
+const addCatColor = addcolor => cat.color += `, ${addcolor}`
+
+addCatColor('roxo')
+
+console.log(cat)
+
 /*
   06
 
@@ -49,6 +77,11 @@
     parâmetro é um objeto;
   - Utilize a função para exibir no console se "cat" é um objeto.
 */
+
+const isObject = obj => typeof obj === 'object' ? true : false
+
+
+console.log(isObject(cat))
 
 /*
   07
@@ -60,6 +93,22 @@
   "A soma das idades de NOME_DO_GATO e NOME_DO_CACHORRO é RESULTADO_DA_SOMA."
 */
 
+const dog = {
+  age: 2,
+  name: 'Doguinho',
+  color: 'preto',
+  bestfriends: ['Neto', 'Lene'],
+  sound: () => 'au au'
+}
+
+const sumAgePets = (obj1, obj2) => {
+  const sumAge = obj1.age +obj2.age
+  const messageSumAgePets = `A soma das idades de ${cat.name} e ${dog.name} é ${sumAge}.`
+  return messageSumAgePets
+}
+
+console.log(sumAgePets(cat,dog))
+
 /*
   08
 
@@ -69,15 +118,12 @@
 */
 
 const isAnSUV = car => {
-  if (car === 'Honda HR-V' || car === 'Jeep Renegade' || car === 'Ford EcoSport' || car === 'Hyundai iX35') {
-    return true
-  }
-
-  return false
+  const SUVcars = ['Honda HR-V','Jeep Renegade','Hyundai iX35','Ford EcoSport']
+  return SUVcars.includes(car)
 }
 
-// console.log(isAnSUV('Honda Civic'))
-// console.log(isAnSUV('Ford EcoSport'))
+console.log(isAnSUV('Honda Civic'))
+console.log(isAnSUV('Ford EcoSport'))
 
 /*
   09
@@ -91,3 +137,17 @@ const isAnSUV = car => {
     propriedades, retorne a mensagem que a propriedade armazena;
   - Teste a função, exibindo no console a mensagem de cada propriedade.
 */
+
+const myFunc = type => {
+  const variableTypes ={
+    null: 'Seta, explicitamente, uma variável sem valor.',
+    undefined: 'Representa um valor não-setado.',
+    object: 'Arrays, Datas, Objetos literais, Funções, etc.',
+    default: 'Tipo não encontrado'
+  }
+  
+  return variableTypes[type] || variableTypes.default
+}
+
+console.log(myFunc(''))
+console.log(myFunc(null))

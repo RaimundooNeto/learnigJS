@@ -13,9 +13,13 @@
     valor no console.
 */
 
-function convertToString (value) {
-  return String(value)
-}
+// function convertToString (value) {
+//   return String(value)
+// }
+
+const convertToString = value => String(value)
+
+console.log(convertToString(11))
 
 /*
   02
@@ -23,6 +27,10 @@ function convertToString (value) {
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+
+const counterStrings = string => string.length
+
+console.log(counterStrings('Ana'))
 
 /*
   03
@@ -34,12 +42,22 @@ function convertToString (value) {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
+const transformInLowerCase = sentence => sentence.toLowerCase()
+
+const sentenceMessage = "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
+
+console.log(transformInLowerCase(sentenceMessage))
+
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+
+const findCaractereInString = (caractere, string) => string.indexOf(caractere)
+
+console.log(findCaractereInString('r', 'arara'))
 
 /*
   05
@@ -48,12 +66,28 @@ function convertToString (value) {
     passado por argumento existe no array (também passado por argumento).
 */
 
+const randonNumbers = [1, 3, 6, 9, -1, 10, 22, 74]
+
+const findValue = (value, array) => array.includes(value)
+
+console.log(findValue(0, randonNumbers))
+
 /*
   06
 
   - Crie uma função que retorna a concatenação de 2 arrays, passados como  
     argumentos em sua invocação;
 */
+
+const maleNames = ['Pedro', 'Antonio', 'Jose']
+const femaleNames = ['Maria', 'Joaquina', 'Zefinha']
+let arrayConcat = []
+
+const concatArrays = (firstArray = [], secondArray = []) => firstArray.concat(secondArray)
+
+arrayConcat = concatArrays(maleNames, femaleNames)
+
+console.log(arrayConcat)
 
 /*
   07
@@ -62,12 +96,24 @@ function convertToString (value) {
     mas com o último item removido.
 */
 
+const popArray = (newArray = []) => newArray.pop()
+
+const crazyNumbers = [1, 2, 3, 4, 5]
+
+popArray(crazyNumbers)
+
+console.log(crazyNumbers)
+
 /*
   08
 
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const isNull = value => value === null 
+
+console.log(isNull(null))
 
 /*
   09
@@ -80,6 +126,14 @@ function convertToString (value) {
     foi exibido.
 */
 
+const myFunc = callback => {
+  callback()
+}
+
+const myName = () => console.log('Raimundo Neto')
+ 
+myFunc(myName)
+
 /*
   10
 
@@ -90,6 +144,14 @@ function convertToString (value) {
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+
+const callCallback = (value, callback) => {
+  return callback(value)
+}
+
+const triple = number => number * 3
+
+console.log(callCallback(33, triple))
 
 /*
   11
@@ -102,6 +164,11 @@ function convertToString (value) {
 
 const numbers = [1, 2, 3]
 
+const logArrayInfo = (number, indexNumber, arrayNumber) => console.log(`O ${indexNumber + 1}º item do array [${arrayNumber}] é ${number}.`)
+
+numbers.forEach(logArrayInfo)
+
+
 /*
   12
 
@@ -113,9 +180,13 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i])
+// }
+
+letters.forEach(value => lettersCopy.push(value))
+
+console.log(lettersCopy)
 
 /*
   13
@@ -146,6 +217,8 @@ const review = [
 
 let paragraphs = ''
 
+review.forEach(comentary => paragraphs += `<p>${comentary}</p>`)
+
 section.innerHTML = paragraphs
 
 /*
@@ -158,7 +231,7 @@ section.innerHTML = paragraphs
   - Se o array recebido estiver vazio, a mensagem que a função deve retornar é  
     "Ninguém curtiu isso";  
   - Se o array conter apenas um nome, como "Rafael", por exemplo, a mensagem  
-    retornada deve ser "Rafael curtiu isso";  
+    retornada deve ser "";  
   - Se o array conter 2 nomes, a mensagem retornada deve ser  
     "NOME_1 e NOME_2 curtiram isso";  
   - Se o array conter 3 nomes, a mensagem retornada deve ser  
@@ -168,3 +241,23 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+
+const getLikesMessage = (names = []) => {
+  switch (names.length){
+    case 0:
+      return 'Ninguém curtiu isso'
+    case 1:
+      return `${names[0]} curtiu isso`
+    case 2:
+      return `${names[0]} e ${names[1]} curtiram isso`
+    case 3:
+      return `${names[0]}, ${names[1]} e ${names[2]} curtiram isso`
+    default:
+      return `${names[0]}, ${names[1]} e mais ${names.length - 2} pessoas curtiram isso`
+  }
+}
+
+likes = ['Neto', 'Pedro', 'Rafael', 'Otavio', 'Andre' , 'Xiquinho']
+
+console.log(getLikesMessage(likes))
