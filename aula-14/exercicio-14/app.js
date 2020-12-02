@@ -5,7 +5,10 @@
     maiúsculas.
 */
 
+const title = document.querySelector('h1')
 
+title.innerHTML = title.textContent.toUpperCase()
+// console.log(title)
 
 /*
   02
@@ -16,6 +19,16 @@
 
 const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
 
+let elementsLi = ''
+
+numbers.forEach(number => {elementsLi += `<li class="number">${number}</li>\n`})
+
+const numbersList = document.querySelector('.numbers')
+
+numbersList.innerHTML += elementsLi
+
+//console.log(elementsLi)
+
 /*
   03
 
@@ -24,6 +37,17 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
     - Se o número é ímpar, exiba-o na cor "pink".
 */
 
+const listaRecuperada = document.querySelectorAll('.number')
+
+
+
+listaRecuperada.forEach(li => {
+  if (parseInt(li.textContent) % 2 == 0){
+    li.style.color = "lightblue"
+  }else{
+    li.style.color = "pink"
+  }
+})
 
 
 /*
@@ -34,6 +58,9 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   P.s: a classe "body-background" já está declarada no style.css.
 */
 
+const bodyTag = document.querySelector('body')
+
+bodyTag.classList.add('body-background')
 
 
 /*
@@ -44,7 +71,9 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
     do link do index.html.
 */
 
+const link = document.querySelector('.link')
 
+link.setAttribute('href', 'https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo')
 
 /*
   06
@@ -52,7 +81,7 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   - Exiba o novo valor do atributo href do link no console.
 */
 
-
+console.log(link.getAttribute('href'))
 
 /*
   07
@@ -61,7 +90,7 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
     manipuladas via JS no h1.
 */
 
-
+console.log(title.style)
 
 /*
   08
@@ -69,7 +98,9 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   - Remova a classe "body-background", do elemento body.
 */
 
+const body = document.querySelector('.body-background')
 
+body.classList.remove('body-background')
 
 /*
   09
@@ -77,3 +108,5 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   - Se o link da página possuir uma classe "link", remova-a;
   - Não utilize o método remove() para fazer isso.
 */
+
+link.classList.toggle('link')
